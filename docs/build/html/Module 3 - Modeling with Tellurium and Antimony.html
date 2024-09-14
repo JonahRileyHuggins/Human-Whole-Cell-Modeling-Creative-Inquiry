@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Module 3: Modeling Events using Antimony, Tellurium and the (S)ystems (B)iology (M)arkdown (L)anguage (SBML). &#8212; Human-Whole-Cell-Modeling-Creative-Inquiry 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <script src="_static/documentation_options.js?v=8d563738"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="1. Packages, The Working Environment, and Anaconda" href="Module%202%20-%20Packages%20-%20Working%20Environments%20-%20and%20Command%20Line%20Operations.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="Module-3:-Modeling-Events-using-Antimony,-Tellurium-and-the-(S)ystems-(B)iology-(M)arkdown-(L)anguage-(SBML).">
+<h1>Module 3: Modeling Events using Antimony, Tellurium and the (S)ystems (B)iology (M)arkdown (L)anguage (SBML).<a class="headerlink" href="#Module-3:-Modeling-Events-using-Antimony,-Tellurium-and-the-(S)ystems-(B)iology-(M)arkdown-(L)anguage-(SBML)." title="Link to this heading">¶</a></h1>
+<p>Now that we have the skills to execute python commands, the basic syntax, and an ability to install packages, lets begin to learn some modeling basics. Antimony and Tellurium are useful tools created by the Suaro Lab at the University of Washington for mechanistic modeling.</p>
+<p>In this module, you will learn how to perform kinetic modeling of biological systems using Antimony and Tellurium. Antimony is a human-readable modeling language that allows you to describe biochemical reactions, while Tellurium is a Python-based environment for running and analyzing these models. By the end of this module, you will be able to: - Write kinetic models using Antimony. - Simulate and analyze models using Tellurium. - Interpret the results of simulations.</p>
+</section>
+<hr class="docutils" />
+<section id="Section-1:-Understanding-Kinetic-Modeling">
+<h1>Section 1: Understanding Kinetic Modeling<a class="headerlink" href="#Section-1:-Understanding-Kinetic-Modeling" title="Link to this heading">¶</a></h1>
+<section id="1.1-What-is-Kinetic-Modeling?">
+<h2>1.1 What is Kinetic Modeling?<a class="headerlink" href="#1.1-What-is-Kinetic-Modeling?" title="Link to this heading">¶</a></h2>
+<p>Kinetic modeling is a mathematical approach used to describe the dynamic behavior of biochemical systems. It involves defining the rates of chemical reactions and simulating how the concentrations of species change over time.</p>
+</section>
+<section id="1.2-Why-Use-Antimony-and-Tellurium?">
+<h2>1.2 Why Use Antimony and Tellurium?<a class="headerlink" href="#1.2-Why-Use-Antimony-and-Tellurium?" title="Link to this heading">¶</a></h2>
+<p>Antimony allows you to create models in a simple, human-readable format, while Tellurium provides a powerful simulation environment with built-in tools for analysis and visualization.</p>
+<hr class="docutils" />
+</section>
+</section>
+<section id="Section-2:-Introduction-to-Antimony">
+<h1>Section 2: Introduction to Antimony<a class="headerlink" href="#Section-2:-Introduction-to-Antimony" title="Link to this heading">¶</a></h1>
+<section id="2.1-Antimony-Syntax">
+<h2>2.1 Antimony Syntax<a class="headerlink" href="#2.1-Antimony-Syntax" title="Link to this heading">¶</a></h2>
+<p>Antimony uses a straightforward syntax to define species, reactions, and parameters. Here’s a basic example of an irreversible reaction where species <code class="docutils literal notranslate"><span class="pre">S1</span></code> converts to <code class="docutils literal notranslate"><span class="pre">S2</span></code> with a rate constant <code class="docutils literal notranslate"><span class="pre">k1</span></code>:</p>
+<div class="highlight-antimony notranslate"><div class="highlight"><pre><span></span>S1 -&gt; S2; k1*S1
+k1 = 0.1
+S1 = 10
+S2 = 0
+</pre></div>
+</div>
+</section>
+<section id="2.2-Creating-a-Simple-Model:">
+<h2>2.2 Creating a Simple Model:<a class="headerlink" href="#2.2-Creating-a-Simple-Model:" title="Link to this heading">¶</a></h2>
+<p>Please install the following package, then restart your jupyter notebook for the change to take effect.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install tellurium</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tellurium</span> <span class="k">as</span> <span class="nn">te</span>
+
+<span class="c1"># Define the model using Antimony</span>
+<span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">model simple_reaction</span>
+<span class="s2">  S1 -&gt; S2; k1*S1</span>
+<span class="s2">  k1 = 0.1</span>
+<span class="s2">  S1 = 10</span>
+<span class="s2">  S2 = 0</span>
+<span class="s2">end</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># Load the model in Tellurium</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">loada</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="c1"># Simulate the model over 100 time units</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Plot the results</span>
+<span class="n">r</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/Module_3_-_Modeling_with_Tellurium_and_Antimony_4_0.png" src="_images/Module_3_-_Modeling_with_Tellurium_and_Antimony_4_0.png" />
+</div>
+</div>
+</section>
+<section id="2.3-Exercises:-Building-Your-First-Model">
+<h2>2.3 Exercises: Building Your First Model<a class="headerlink" href="#2.3-Exercises:-Building-Your-First-Model" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Exercise 1:</strong> Modify the reaction to include a reverse reaction where <code class="docutils literal notranslate"><span class="pre">S2</span></code> converts back to <code class="docutils literal notranslate"><span class="pre">S1</span></code> with rate constant <code class="docutils literal notranslate"><span class="pre">k2</span></code>.</p></li>
+<li><p><strong>Exercise 2:</strong> Add a second reaction where <code class="docutils literal notranslate"><span class="pre">S2</span></code> converts to a new species <code class="docutils literal notranslate"><span class="pre">S3</span></code> and simulate the system.</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
+<section id="Section-3:-Advanced-Modeling-with-Antimony">
+<h1>Section 3: Advanced Modeling with Antimony<a class="headerlink" href="#Section-3:-Advanced-Modeling-with-Antimony" title="Link to this heading">¶</a></h1>
+<section id="3.1-Modeling-Enzyme-Kinetics">
+<h2>3.1 Modeling Enzyme Kinetics<a class="headerlink" href="#3.1-Modeling-Enzyme-Kinetics" title="Link to this heading">¶</a></h2>
+<p>Enzyme kinetics can be modeled using Michaelis-Menten kinetics. Here’s an example where an enzyme <code class="docutils literal notranslate"><span class="pre">E</span></code> catalyzes the conversion of substrate <code class="docutils literal notranslate"><span class="pre">S</span></code> to product <code class="docutils literal notranslate"><span class="pre">P</span></code>:</p>
+<div class="highlight-antimony notranslate"><div class="highlight"><pre><span></span>model enzyme_kinetics
+  S + E -&gt; C; k1*S*E
+  C -&gt; E + P; k2*C
+  C -&gt; S + E; k3*C
+  S = 10
+  E = 1
+  P = 0
+  C = 0
+  k1 = 0.1
+  k2 = 0.05
+  k3 = 0.01
+end
+</pre></div>
+</div>
+</section>
+<section id="3.2-Exploring-Parameter-Sensitivity">
+<h2>3.2 Exploring Parameter Sensitivity<a class="headerlink" href="#3.2-Exploring-Parameter-Sensitivity" title="Link to this heading">¶</a></h2>
+<p>Parameter sensitivity analysis helps you understand how changes in parameters affect the system’s behavior.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perform a parameter scan for k1</span>
+<span class="n">r</span><span class="o">.</span><span class="n">resetToOrigin</span><span class="p">()</span>
+<span class="n">r</span><span class="o">.</span><span class="n">k1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
+<span class="n">scan_results</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="s1">&#39;k1&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">r</span><span class="o">.</span><span class="n">simulate</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scan_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">TypeError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-intense-fg ansi-bold">In[3], line 3</span>
+<span class="ansi-green-fg">      1</span> <span style="color: rgb(95,135,135)"># Perform a parameter scan for k1</span>
+<span class="ansi-green-fg">      2</span> r<span style="color: rgb(98,98,98)">.</span>resetToOrigin()
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 3</span> <span class="ansi-yellow-bg">r</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">k1</span> <span style="color: rgb(98,98,98)">=</span> [<span style="color: rgb(98,98,98)">0.05</span>, <span style="color: rgb(98,98,98)">0.1</span>, <span style="color: rgb(98,98,98)">0.2</span>]
+<span class="ansi-green-fg">      4</span> scan_results <span style="color: rgb(98,98,98)">=</span> r<span style="color: rgb(98,98,98)">.</span>scan(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">k1</span><span style="color: rgb(175,0,0)">&#39;</span>, [<span style="color: rgb(98,98,98)">0.05</span>, <span style="color: rgb(98,98,98)">0.1</span>, <span style="color: rgb(98,98,98)">0.2</span>], r<span style="color: rgb(98,98,98)">.</span>simulate, <span style="color: rgb(98,98,98)">0</span>, <span style="color: rgb(98,98,98)">100</span>, <span style="color: rgb(98,98,98)">100</span>)
+<span class="ansi-green-fg">      5</span> r<span style="color: rgb(98,98,98)">.</span>plot(scan_results)
+
+File <span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\training\Lib\site-packages\roadrunner\roadrunner.py:4538</span>, in <span class="ansi-cyan-fg">RoadRunner._makeProperties.&lt;locals&gt;.makeProperty.&lt;locals&gt;.&lt;lambda&gt;</span><span class="ansi-blue-intense-fg ansi-bold">(self, val)</span>
+<span class="ansi-green-fg">   4535</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">makeProperty</span>(name, sel):
+<span class="ansi-green-fg">   4536</span>     prop <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">property</span>(
+<span class="ansi-green-fg">   4537</span>             <span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span> <span style="color: rgb(0,135,0)">self</span>: <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>getModel()<span style="color: rgb(98,98,98)">.</span><span style="color: rgb(0,0,255)">__getitem__</span>(sel),
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 4538</span>             <span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span> <span style="color: rgb(0,135,0)">self</span>, val: <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">getModel</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg" style="color: rgb(0,0,255)">__setitem__</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">sel</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">val</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">   4539</span>     )
+<span class="ansi-green-fg">   4540</span>     <span style="color: rgb(0,135,0)">setattr</span>(RoadRunner, name, prop)
+<span class="ansi-green-fg">   4541</span>     RoadRunner<span style="color: rgb(98,98,98)">.</span>_properties<span style="color: rgb(98,98,98)">.</span>append(name)
+
+File <span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\training\Lib\site-packages\roadrunner\roadrunner.py:1908</span>, in <span class="ansi-cyan-fg">ExecutableModel.__setitem__</span><span class="ansi-blue-intense-fg ansi-bold">(self, id, value)</span>
+<span class="ansi-green-fg">   1907</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">__setitem__</span>(<span style="color: rgb(0,135,0)">self</span>, <span style="color: rgb(0,135,0)">id</span>: <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">std::string const &amp;</span><span style="color: rgb(175,0,0)">&#34;</span>, value: <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">double</span><span style="color: rgb(175,0,0)">&#34;</span>) <span style="color: rgb(98,98,98)">-</span><span style="color: rgb(98,98,98)">&gt;</span> <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">void</span><span style="color: rgb(175,0,0)">&#34;</span>:
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1908</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">_roadrunner</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">ExecutableModel___setitem__</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">id</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">value</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-red-intense-fg ansi-bold">TypeError</span>: in method &#39;ExecutableModel___setitem__&#39;, argument 3 of type &#39;double&#39;
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Section-4:-Simulating-and-Analyzing-Models-with-Tellurium">
+<h1>Section 4: Simulating and Analyzing Models with Tellurium<a class="headerlink" href="#Section-4:-Simulating-and-Analyzing-Models-with-Tellurium" title="Link to this heading">¶</a></h1>
+<section id="4.1-Time-Course-Simulations">
+<h2>4.1 Time-Course Simulations<a class="headerlink" href="#4.1-Time-Course-Simulations" title="Link to this heading">¶</a></h2>
+<p>Tellurium allows you to perform time-course simulations to see how the system evolves over time.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulate the model</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/Module_3_-_Modeling_with_Tellurium_and_Antimony_9_0.png" src="_images/Module_3_-_Modeling_with_Tellurium_and_Antimony_9_0.png" />
+</div>
+</div>
+</section>
+<section id="4.2-Steady-State-Analysis">
+<h2>4.2 Steady-State Analysis<a class="headerlink" href="#4.2-Steady-State-Analysis" title="Link to this heading">¶</a></h2>
+<p>Steady-state analysis helps you find the equilibrium concentrations of species.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">steady_state</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">steadyState</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Steady-state concentrations:&quot;</span><span class="p">,</span> <span class="n">steady_state</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Steady-state concentrations: 6.617444900424222e-25
+</pre></div></div>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+<section id="Section-5:-Case-Studies">
+<h1>Section 5: Case Studies<a class="headerlink" href="#Section-5:-Case-Studies" title="Link to this heading">¶</a></h1>
+<section id="5.1-Modeling-Gene-Regulatory-Networks">
+<h2>5.1 Modeling Gene Regulatory Networks<a class="headerlink" href="#5.1-Modeling-Gene-Regulatory-Networks" title="Link to this heading">¶</a></h2>
+<p>Gene regulatory networks can be modeled to understand how genes interact to control cellular processes.</p>
+<div class="highlight-antimony notranslate"><div class="highlight"><pre><span></span>model gene_regulation
+  // Example of a simple gene regulatory network
+  G + R -&gt; GR; k1*G*R
+  GR -&gt; G + R; k2*GR
+  GR -&gt; P + G + R; k3*GR
+  P -&gt; ; k4*P
+
+  G = 1
+  R = 1
+  P = 0
+  GR = 0
+  k1 = 0.1
+  k2 = 0.1
+  k3 = 0.05
+  k4 = 0.01
+end
+</pre></div>
+</div>
+</section>
+<section id="5.2-Metabolic-Pathway-Modeling">
+<h2>5.2 Metabolic Pathway Modeling<a class="headerlink" href="#5.2-Metabolic-Pathway-Modeling" title="Link to this heading">¶</a></h2>
+<p>Metabolic pathways describe the flow of metabolites through enzymatic reactions. You can use Antimony to model complex pathways and study their dynamics.</p>
+<div class="highlight-antimony notranslate"><div class="highlight"><pre><span></span>model metabolic_pathway
+  A -&gt; B; v1*A
+  B -&gt; C; v2*B
+  C -&gt; ; v3*C
+
+  A = 10
+  B = 0
+  C = 0
+  v1 = 0.1
+  v2 = 0.05
+  v3 = 0.02
+end
+</pre></div>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+<section id="Conclusion">
+<h1>Conclusion<a class="headerlink" href="#Conclusion" title="Link to this heading">¶</a></h1>
+<p>By completing this module, you have learned how to build, simulate, and analyze kinetic models using Antimony and Tellurium. These tools are powerful for exploring the dynamic behavior of biochemical systems and can be applied to a wide range of biological modeling problems. Continue experimenting with your own models and explore the rich features offered by Tellurium for deeper analysis.</p>
+</section>
+<section id="Further-Reading-and-Resources">
+<h1>Further Reading and Resources<a class="headerlink" href="#Further-Reading-and-Resources" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><strong>Tellurium Documentation:</strong> <a class="reference external" href="http://tellurium.analogmachine.org/documentation/">Tellurium Docs</a></p></li>
+<li><p><strong>Antimony Documentation:</strong> <a class="reference external" href="https://antimony.readthedocs.io/en/latest/">Antimony Docs</a></p></li>
+<li><p><strong>SBML (Systems Biology Markup Language):</strong> Learn about the standard format for exchanging biological models.</p></li>
+<li><p><strong>BioModels Database:</strong> Explore a repository of published, peer-reviewed models.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="Acknowledgments">
+<h1>Acknowledgments<a class="headerlink" href="#Acknowledgments" title="Link to this heading">¶</a></h1>
+<p>This module is inspired by the work of the broader systems biology community and is designed to provide a practical introduction to kinetic modeling using Antimony and Tellurium. ```</p>
+<hr class="docutils" />
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Human-Whole-Cell-Modeling-Creative-Inquiry</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Module%200%20-%20Project%20Background%28s%29.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module%201%20-%20Python%20and%20Jupyter%20Notebooks%20Primer.html">Module 01: A Primer On Python and Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module%202%20-%20Packages%20-%20Working%20Environments%20-%20and%20Command%20Line%20Operations.html">1. Packages, The Working Environment, and Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module%202%20-%20Packages%20-%20Working%20Environments%20-%20and%20Command%20Line%20Operations.html#2.-Python-Packages">2. Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module%202%20-%20Packages%20-%20Working%20Environments%20-%20and%20Command%20Line%20Operations.html#3.-Working-Environments">3. Working Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module%202%20-%20Packages%20-%20Working%20Environments%20-%20and%20Command%20Line%20Operations.html#4.-Anaconda">4. Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module%202%20-%20Packages%20-%20Working%20Environments%20-%20and%20Command%20Line%20Operations.html#Conclusion">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module%202%20-%20Packages%20-%20Working%20Environments%20-%20and%20Command%20Line%20Operations.html#Assignment:">Assignment:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module%202%20-%20Packages%20-%20Working%20Environments%20-%20and%20Command%20Line%20Operations.html#6.-Conclusion">6. Conclusion</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Module 3: Modeling Events using Antimony, Tellurium and the (S)ystems (B)iology (M)arkdown (L)anguage (SBML).</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Section-1:-Understanding-Kinetic-Modeling">Section 1: Understanding Kinetic Modeling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#1.1-What-is-Kinetic-Modeling?">1.1 What is Kinetic Modeling?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#1.2-Why-Use-Antimony-and-Tellurium?">1.2 Why Use Antimony and Tellurium?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#Section-2:-Introduction-to-Antimony">Section 2: Introduction to Antimony</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#2.1-Antimony-Syntax">2.1 Antimony Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#2.2-Creating-a-Simple-Model:">2.2 Creating a Simple Model:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#2.3-Exercises:-Building-Your-First-Model">2.3 Exercises: Building Your First Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#Section-3:-Advanced-Modeling-with-Antimony">Section 3: Advanced Modeling with Antimony</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#3.1-Modeling-Enzyme-Kinetics">3.1 Modeling Enzyme Kinetics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#3.2-Exploring-Parameter-Sensitivity">3.2 Exploring Parameter Sensitivity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#Section-4:-Simulating-and-Analyzing-Models-with-Tellurium">Section 4: Simulating and Analyzing Models with Tellurium</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#4.1-Time-Course-Simulations">4.1 Time-Course Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#4.2-Steady-State-Analysis">4.2 Steady-State Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#Section-5:-Case-Studies">Section 5: Case Studies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#5.1-Modeling-Gene-Regulatory-Networks">5.1 Modeling Gene Regulatory Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#5.2-Metabolic-Pathway-Modeling">5.2 Metabolic Pathway Modeling</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#Conclusion">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Further-Reading-and-Resources">Further Reading and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Acknowledgments">Acknowledgments</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Module%202%20-%20Packages%20-%20Working%20Environments%20-%20and%20Command%20Line%20Operations.html" title="previous chapter">1. Packages, The Working Environment, and Anaconda</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Jonah R. Huggins.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/Module 3 - Modeling with Tellurium and Antimony.ipynb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

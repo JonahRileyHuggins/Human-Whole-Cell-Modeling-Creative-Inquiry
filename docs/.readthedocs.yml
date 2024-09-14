@@ -1,0 +1,14 @@
+version: 2
+
+build:
+  os: windows-10.0.22631 N/A Build 22631
+  tools:
+    python: "3.12"
+
+sphinx:
+  configuration: docs/source/conf.py
+
+python:
+  install:
+    - requirements: requirements.txt
+

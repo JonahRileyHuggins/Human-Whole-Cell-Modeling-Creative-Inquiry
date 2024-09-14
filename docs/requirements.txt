@@ -1,0 +1,8 @@
+ipykernel==6.25.1
+pandas==2.1.0
+numpy==1.26.0
+matplotlib==3.8.0
+seaborn==0.12.2
+tellurium==2.2.5
+antimony==2.12.0
+python-libsbml==5.19.2
