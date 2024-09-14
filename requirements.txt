@@ -6,3 +6,5 @@ seaborn==0.12.2
 tellurium==2.2.5
 antimony==2.12.0.1
 python-libsbml==5.19.2
+myst-parser==4.0.0
+nbsphinx==0.9.5
